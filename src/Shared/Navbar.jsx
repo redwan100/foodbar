@@ -16,11 +16,7 @@ const headerData = [
 const Navbar = () => {
     const link = headerData.map((item,i)=><NavLink key={i} to={item.path} className={({isActive})=>isActive&&'text-red-500'} >{item.name}</NavLink>)
   return (
-    <div>
-      {/* <div>logo</div>
-        <div>{link}</div>
-        <button className='btn btn-sm'>Login</button> */}
-
+    <div className="shadow-md">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -45,7 +41,7 @@ const Navbar = () => {
             </div>
           </div>
           <NavLink className="btn btn-ghost normal-case text-xl" to={"/"}>
-            daisyUI
+            <img src="https://i.ibb.co/tD9hxF9/logo.png" alt="" />
           </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
