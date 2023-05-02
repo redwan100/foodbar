@@ -2,10 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    
   return (
     <div>
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[80%] sm:w-[50%] md:w-[40%] mx-auto">
-        
+        <h1 className="text-center text-3xl font-semibold mb-4">Sign In</h1>
+
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
             Email
@@ -41,7 +44,12 @@ const Login = () => {
         </div>
         <p className="text-red-500 my-2">firebase error</p>
 
-        <p>Don't have an account? <Link to={'/register'} className='text-blue-500 hover:underline'>Register</Link> </p>
+        <p>
+          Don't have an account?{" "}
+          <Link to={"/register"} className="text-blue-500 hover:underline">
+            Register
+          </Link>{" "}
+        </p>
       </form>
     </div>
   );

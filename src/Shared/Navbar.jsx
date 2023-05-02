@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { AuthContext } from '../Providers/AuthProvider'
 
 const headerData = [
     {
@@ -14,6 +15,9 @@ const headerData = [
 
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
+
+  
     const link = headerData.map((item,i)=><NavLink key={i} to={item.path} className={({isActive})=>isActive?'text-red-500':''} >{item.name}</NavLink>)
   return (
     <div className="shadow-md">
