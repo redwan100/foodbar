@@ -19,7 +19,7 @@ console.log(data);
     },[])
 
   return (
-    <div className='grid gap-5 grid-cols-[repeat(auto-fit,_minmax(230px,_1fr))]'>
+    <div className='grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {
             chefInfo.map((chef)=><ChefItem {...chef} key={chef.id}/>)
         }
