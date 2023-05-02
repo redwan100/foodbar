@@ -5,11 +5,12 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+
 import { createContext, useEffect, useState } from "react";
-import app from "../Firebase/Firebase.config";
+import app from "../firebase/firebase.config";
 
 
-const auth = getAuth(app);
+const auth = getAuth(app)
 
 export const AuthContext = createContext(null);
 
