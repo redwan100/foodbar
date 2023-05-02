@@ -25,8 +25,8 @@ const siders = [
   },
 ];
 const Slider = () => {
-  const slider = siders.map((slide) => (
-    <SwiperSlide>
+  const slider = siders.map((slide, i) => (
+    <SwiperSlide key={i}>
       <img src={slide.img} alt="" />
       <div className="desc">
         <h1>{slide.title} </h1>

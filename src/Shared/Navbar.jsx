@@ -14,7 +14,7 @@ const headerData = [
 
 
 const Navbar = () => {
-    const link = headerData.map((item,i)=><NavLink key={i} to={item.path} className={({isActive})=>isActive&&'text-red-500'} >{item.name}</NavLink>)
+    const link = headerData.map((item,i)=><NavLink key={i} to={item.path} className={({isActive})=>isActive?'text-red-500':''} >{item.name}</NavLink>)
   return (
     <div className="shadow-md">
       <div className="navbar bg-base-100">
