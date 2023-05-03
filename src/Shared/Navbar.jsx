@@ -15,10 +15,16 @@ const headerData = [
 
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
+  const {user, logOut} = useContext(AuthContext);
 
   
     const link = headerData.map((item,i)=><NavLink key={i} to={item.path} className={({isActive})=>isActive?'text-red-500':''} >{item.name}</NavLink>)
+
+    const handleSignOut = ()=>{
+      logOut()
+      .then(()=>{})
+      .catch(err=>console.log(err))
+    }
   return (
     <div className="shadow-md">
       <div className="navbar bg-base-100">
@@ -54,7 +60,30 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-end">
-          <NavLink className="btn btn-success btn-sm md:btn-md">Log in</NavLink>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8">
+                <img
+                  className="w-full h-full rounded-full ring"
+                  src="https://source.unsplash.com/user/c_v_r/100x100"
+                  alt=""
+                />
+              </div>
+              <button
+                onClick={handleSignOut}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Log out
+              </button>
+            </div>
+          ) : (
+            <NavLink
+              to="/login"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Log in
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
