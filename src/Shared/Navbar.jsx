@@ -80,7 +80,11 @@ const Navbar = () => {
                 <div className="w-8 h-8">
                   <img
                     className="w-full h-full rounded-full ring"
-                    src="https://source.unsplash.com/user/c_v_r/100x100"
+                    src={`${
+                      user.photoUrl
+                        ? user.photoUrl
+                        : "https://source.unsplash.com/user/c_v_r/100x100"
+                    }`}
                     alt=""
                   />
                 </div>

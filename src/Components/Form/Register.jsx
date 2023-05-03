@@ -1,4 +1,4 @@
-
+import { AiOutlineGoogle, AiFillGithub } from "react-icons/ai";
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const Register = () => {
 const [error, setError] = useState('')
   // ========= Context ========
-  const { user, createUser, userNameUpdate } = useContext(AuthContext);
+  const { user, createUser,googleLogin, userNameUpdate } = useContext(AuthContext);
 
 
   console.log('user',user);
@@ -40,6 +40,15 @@ const profileUpdate =(user, userName,photoUrl)=>{
     .catch((err) => setError(err.message));
 }
 
+
+const handleGoogleLogin = () =>{
+  googleLogin()
+  .then((result)=>{
+    const loggedIn = result.user;
+    console.log(loggedIn);
+  })
+  .catch((error)=>setError(error.message))
+}
 
   return (
     <div>
@@ -117,7 +126,27 @@ const profileUpdate =(user, userName,photoUrl)=>{
         </div>
         <p className="text-red-500 my-2">{error}</p>
 
-        <p>
+        {/* Google or Github  */}
+        <div className="relative w-full h-[2px] bg-slate-200 my-4">
+          <span className="absolute -top-[.90rem] bg-white rounded-full text-lg font-medium left-[50%] -translate-x-[50%] w-4 h-4 z-20">
+            or
+          </span>
+        </div>
+        <div className="space-y-2">
+          <button
+            className="btn btn-outline w-full"
+            onClick={handleGoogleLogin}
+          >
+            <AiOutlineGoogle size={20} />
+            Login with Google
+          </button>
+          <button className="btn border-gray-800 w-full">
+            <AiFillGithub size={20} />
+            Login with Github
+          </button>
+        </div>
+
+        <p className="mt-3">
           Already account?{" "}
           <Link to={"/login"} className="text-blue-500 hover:underline">
             Login

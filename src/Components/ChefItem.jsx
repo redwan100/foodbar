@@ -61,7 +61,7 @@ export const ChefItem = ({
 
     <div className="card lg:card-side bg-base-100 shadow-xl">
       <figure>
-        <img src={chefPicture} alt="Album" />
+        <img className="w-full h-full" src={chefPicture} alt="Album" />
       </figure>
       <div className="card-body">
         <div className="space-y-3">

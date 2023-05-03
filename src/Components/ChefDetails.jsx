@@ -1,72 +1,83 @@
-import { Rating } from '@smastrom/react-rating';
-import React from 'react'
-import { AiFillLike } from 'react-icons/ai';
+import { Rating } from "@smastrom/react-rating";
+import React from "react";
+import { AiFillLike } from "react-icons/ai";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
-import { useLoaderData,Link } from 'react-router-dom'
+import { useLoaderData, Link } from "react-router-dom";
 
 const ChefDetails = () => {
-    const data = useLoaderData();
-    
-    console.log(data);
-   const {
-     id,
-     chefPicture,
-     chefName,
-     bio,
-     like,
-     ratings,
-     yearsOfExperience,
-     numberOfRecipes,
-     recipi,
-   } = data[0];
+  const data = useLoaderData();
 
+  console.log(data);
+  const {
+    id,
+    chefPicture,
+    chefName,
+    bio,
+    like,
+    ratings,
+    yearsOfExperience,
+    numberOfRecipes,
+    recipi,
+  } = data[0];
 
-  const recipeItem = recipi.map((item)=>{
+  const recipeItem = recipi.map((item) => {
     const { Picture, cookingMethod, id, ingredients, rating, recipeName } =
       item;
 
-      const ingredientItem = ingredients.map((item)=><p className='bg-gray-300 m-2 p-[4px] rounded-md text-center capitalize font-semibold'>{item}</p>);
-   return (
-       <React.Fragment key={id}>
-         <div className="card bg-base-100 shadow-xl">
-           <figure>
-             <img
-               className="max-w-full object-cover"
-               src={Picture}
-               alt="recipe"
-             />
-           </figure>
-           <div className="card-body">
-             <h2 className="card-title">
-               {recipeName}
-               <div className="badge badge-secondary">NEW</div>
-             </h2>
-             <div>
-               <strong className="">Cooking Method: </strong>
-               <p className='text-gray-700'>{cookingMethod}</p>
-             </div>
+    const ingredientItem = ingredients.map((item) => (
+      <p className="bg-gray-300 m-2 p-[4px] rounded-md text-center capitalize font-semibold">
+        {item}
+      </p>
+    ));
+    return (
+      <React.Fragment key={id}>
+        <div className="card bg-base-100 shadow-xl">
+          <figure>
+            <img
+              className="max-w-full object-cover"
+              src={Picture}
+              alt="recipe"
+            />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">
+              {recipeName}
+              <div className="badge badge-secondary">NEW</div>
+            </h2>
+            <div>
+              <strong className="">Cooking Method: </strong>
+              <p className="text-gray-700">{cookingMethod}</p>
+            </div>
 
-             <div>
-              <p><strong>Ingredients:</strong>
-              <p className='bg-gray-100 rounded-md flex gap-1 flex-wrap'>{ingredientItem}</p></p>
-             </div>
-             <div className="card-actions justify-end">
-               <div className="badge badge-outline">Fashion</div>
-               <div className="badge badge-outline">Products</div>
-             </div>
-           </div>
-         </div>
-       </React.Fragment>
-   );
-})
-
+            <div>
+              <p>
+                <strong>Ingredients:</strong>
+                <p className="bg-gray-100 rounded-md flex gap-1 flex-wrap">
+                  {ingredientItem}
+                </p>
+              </p>
+            </div>
+            <div className="card-actions justify-end0">
+              <div className="w-24 mt-3 flex items-center gap-2">
+                <Rating value={ratings} readOnly />
+                <span className="text-sm">{rating}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  });
 
   return (
-
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img className='max-w-full object-cover' src={chefPicture} alt="Album" />
+        <img
+          className="max-w-full object-cover"
+          src={chefPicture}
+          alt="Album"
+        />
       </figure>
       <div className="card-body">
         <div className="space-y-3">
@@ -87,11 +98,13 @@ const ChefDetails = () => {
             <p className="font-medium">Experience:{yearsOfExperience} Years</p>
           </div>
         </div>
-          <h2 className="card-title text-2xl">{chefName}</h2>
-        <p className='text-gray-700 text-sm sm:text-base'>{bio}</p>
+        <h2 className="card-title text-2xl">{chefName}</h2>
+        <p className="text-gray-700 text-sm sm:text-base">{bio}</p>
 
-      {/* ===== Recipe ==== */}
-        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>{recipeItem}</div>
+        {/* ===== Recipe ==== */}
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {recipeItem}
+        </div>
       </div>
       <Link
         to={`/`}
@@ -102,6 +115,6 @@ const ChefDetails = () => {
       </Link>
     </div>
   );
-}
+};
 
-export default ChefDetails
+export default ChefDetails;
