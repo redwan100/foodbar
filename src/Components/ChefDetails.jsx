@@ -21,21 +21,14 @@ const ChefDetails = () => {
      recipi,
    } = data[0];
 
-   console.log('recipe',recipi);
-
-  //  const li = recipe_items.map((recipe) => (
-  //    <li className="bg-gray-100 p-1 rounded-md capitalize font-medium">{recipe.name}</li>
-  //  ));
 
   const recipeItem = recipi.map((item)=>{
     const { Picture, cookingMethod, id, ingredients, rating, recipeName } =
       item;
-      console.log(ingredients);
+
       const ingredientItem = ingredients.map((item)=><p className='bg-gray-300 m-2 p-[4px] rounded-md text-center capitalize font-semibold'>{item}</p>);
    return (
-    
-     <>
-       <div key={id}>
+       <React.Fragment key={id}>
          <div className="card bg-base-100 shadow-xl">
            <figure>
              <img
@@ -56,7 +49,7 @@ const ChefDetails = () => {
 
              <div>
               <p><strong>Ingredients:</strong>
-              <p className='bg-gray-100 rounded-md flex gap-1'>{ingredientItem}</p></p>
+              <p className='bg-gray-100 rounded-md flex gap-1 flex-wrap'>{ingredientItem}</p></p>
              </div>
              <div className="card-actions justify-end">
                <div className="badge badge-outline">Fashion</div>
@@ -64,10 +57,11 @@ const ChefDetails = () => {
              </div>
            </div>
          </div>
-       </div>
-     </>
+       </React.Fragment>
    );
 })
+
+
   return (
 
     <div className="card bg-base-100 shadow-xl">
@@ -97,7 +91,7 @@ const ChefDetails = () => {
         <p className='text-gray-700 text-sm sm:text-base'>{bio}</p>
 
       {/* ===== Recipe ==== */}
-        <div>{recipeItem}</div>
+        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>{recipeItem}</div>
       </div>
       <Link
         to={`/`}

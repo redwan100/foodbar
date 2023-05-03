@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ChefItem } from "../Components/ChefItem";
-import { useLoaderData } from "react-router-dom";
 
 const Chef = () => {
   const [loading, setLoading] = useState(true);
@@ -26,16 +25,19 @@ useEffect(() => {
        <p>Loading...</p>
      );
    }
-//   c
+
  
 
   return (
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {chefInfo.map((chef) => (
-        <ChefItem {...chef} key={chef.id} />
-      ))}
-
-     
+    <div className=" py-16">
+      <h1 className="text-center text-2xl font-bold sm:text-3xl md:text-4xl my-5">
+        Our Top Chef
+      </h1>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {chefInfo.map((chef) => (
+          <ChefItem {...chef} key={chef.id} />
+        ))}
+      </div>
     </div>
   );
 };

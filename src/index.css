@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.myContainer{
+    @apply container mx-auto w-[80%]
+}

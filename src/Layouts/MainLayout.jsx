@@ -6,10 +6,10 @@ import Footer from "../Shared/Footer";
 const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <div>
+      <div className="mb-10">
         <Navbar />
       </div>
-      <div>
+      <div className="myContainer">
         <Outlet />
       </div>
       <div className="mt-[auto!important]">
