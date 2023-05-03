@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const Register = () => {
 const [error, setError] = useState('')
   // ========= Context ========
-  const { user, createUser,googleLogin, userNameUpdate } = useContext(AuthContext);
+  const { user, createUser,googleLogin,githubLogin, userNameUpdate } = useContext(AuthContext);
 
 
   console.log('user',user);
@@ -48,6 +48,14 @@ const handleGoogleLogin = () =>{
     console.log(loggedIn);
   })
   .catch((error)=>setError(error.message))
+}
+const handleGithubLogin = () =>{
+  githubLogin()
+    .then((result) => {
+      const loggedIn = result.user;
+      console.log(loggedIn);
+    })
+    .catch((error) => setError(error.message));
 }
 
   return (
@@ -140,7 +148,10 @@ const handleGoogleLogin = () =>{
             <AiOutlineGoogle size={20} />
             Login with Google
           </button>
-          <button className="btn border-gray-800 w-full">
+          <button
+            className="btn border-gray-800 w-full"
+            onClick={handleGithubLogin}
+          >
             <AiFillGithub size={20} />
             Login with Github
           </button>
