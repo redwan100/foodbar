@@ -8,58 +8,104 @@ import { useLoaderData,Link } from 'react-router-dom'
 const ChefDetails = () => {
     const data = useLoaderData();
     
-    console.log(data[0]);
+    console.log(data);
    const {
      id,
-     image,
-     chef_name,
+     chefPicture,
+     chefName,
      bio,
-     experiences,
      like,
-     recipe_items,
-     rating,
-     years_of_experience,
+     ratings,
+     yearsOfExperience,
+     numberOfRecipes,
+     recipi,
    } = data[0];
 
+   console.log('recipe',recipi);
 
-   const li = recipe_items.map((recipe) => (
-     <li className="bg-gray-100 p-1 rounded-md capitalize font-medium">{recipe.name}</li>
-   ));
+  //  const li = recipe_items.map((recipe) => (
+  //    <li className="bg-gray-100 p-1 rounded-md capitalize font-medium">{recipe.name}</li>
+  //  ));
 
+  const recipeItem = recipi.map((item)=>{
+    const { Picture, cookingMethod, id, ingredients, rating, recipeName } =
+      item;
+      console.log(ingredients);
+      const ingredientItem = ingredients.map((item)=><p className='bg-gray-300 m-2 p-[4px] rounded-md text-center capitalize font-semibold'>{item}</p>);
+   return (
+    
+     <>
+       <div key={id}>
+         <div className="card bg-base-100 shadow-xl">
+           <figure>
+             <img
+               className="max-w-full object-cover"
+               src={Picture}
+               alt="recipe"
+             />
+           </figure>
+           <div className="card-body">
+             <h2 className="card-title">
+               {recipeName}
+               <div className="badge badge-secondary">NEW</div>
+             </h2>
+             <div>
+               <strong className="">Cooking Method: </strong>
+               <p className='text-gray-700'>{cookingMethod}</p>
+             </div>
+
+             <div>
+              <p><strong>Ingredients:</strong>
+              <p className='bg-gray-100 rounded-md flex gap-1'>{ingredientItem}</p></p>
+             </div>
+             <div className="card-actions justify-end">
+               <div className="badge badge-outline">Fashion</div>
+               <div className="badge badge-outline">Products</div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </>
+   );
+})
   return (
-    <div className="relative my-5">
-      <Link
-        to={`/`}
-        className="p-2 shadow-sm bg-slate-100 rounded-md text-gray-800 mx-auto absolute btn-sm top-2 left-0 font-semibold flex items-center gap-1 sm:left-8 md:left-11 lg:left-16"
-      >
-        <MdOutlineKeyboardDoubleArrowLeft />
-        <span className="hidden sm:block"> Go Back</span>
-      </Link>
-      <div className="w-[50%] md:w-[60%] mx-auto  p-2 rounded-md border border-gray-100 shadow-md sm:p-4">
-        <div className="relative mx-auto w-full block">
-          <img src={image} alt="" className=" w-full object-cover rounded-md" />
-        </div>
 
-        {/* ==========Content=========== */}
-        <div className="space-y-3 my-8">
-          <h1 className="text-3xl font-medium md:text-4xl">{chef_name}</h1>
-          <div className="w-36 flex gap-3">
-            <Rating value={rating} readOnly />
-            <span>{rating}</span>
-          </div>
-          <p className="text-gray-600 text-sm sm:text-lg md:text-2xl">{bio}</p>
-
-          <div>
-            <h1 className="font-medium text-xl md:text-2xl">List of Recipe</h1>
-            <ul className="flex gap-1">{li}</ul>
+    <div className="card bg-base-100 shadow-xl">
+      <figure>
+        <img className='max-w-full object-cover' src={chefPicture} alt="Album" />
+      </figure>
+      <div className="card-body">
+        <div className="space-y-3">
+          <div className="w-24 flex gap-3">
+            <Rating value={ratings} readOnly />
+            <span>{ratings}</span>{" "}
           </div>
 
-          <p className="font-medium">Experience:{years_of_experience} Years</p>
           <p className="flex items-center gap-1">
             <AiFillLike size={20} className="text-blue-500" /> {like}
           </p>
+          <div>
+            <h1>
+              Numbers Of recipe <strong className="">{numberOfRecipes}</strong>
+            </h1>
+          </div>
+          <div>
+            <p className="font-medium">Experience:{yearsOfExperience} Years</p>
+          </div>
         </div>
+          <h2 className="card-title text-2xl">{chefName}</h2>
+        <p className='text-gray-700 text-sm sm:text-base'>{bio}</p>
+
+      {/* ===== Recipe ==== */}
+        <div>{recipeItem}</div>
       </div>
+      <Link
+        to={`/`}
+        className="p-2 shadow-sm bg-slate-100 rounded-md text-gray-800 font-semibold flex items-center gap-1 "
+      >
+        <MdOutlineKeyboardDoubleArrowLeft />
+        <span> Go Back</span>
+      </Link>
     </div>
   );
 }

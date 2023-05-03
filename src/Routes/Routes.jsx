@@ -6,12 +6,15 @@ import Chef from "../Pages/Chef";
 import ChefDetails from "../Components/ChefDetails";
 import Register from "../Components/Form/Register";
 import Login from "../Components/Form/Login";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import Error from "../Pages/Error";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -36,8 +39,12 @@ const router = createBrowserRouter([
       },
       {
         path: "chefItem/:id",
-        element: <ChefDetails />,
-        loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`),
+        element: (
+          <PrivetRoute>
+            <ChefDetails />,
+          </PrivetRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`),
       },
     ],
   },

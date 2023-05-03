@@ -1,30 +1,37 @@
-import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
-import { AuthContext } from '../Providers/AuthProvider'
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import {GiForkKnifeSpoon} from 'react-icons/gi'
 
 const headerData = [
-    {
-        name:'Home',
-        path:'/'
-    },
-    {
-        name:'About',
-        path:'/about'
-    },
-]
-
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+];
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  
-    const link = headerData.map((item,i)=><NavLink key={i} to={item.path} className={({isActive})=>isActive?'text-red-500':''} >{item.name}</NavLink>)
+  const link = headerData.map((item, i) => (
+    <NavLink
+      key={i}
+      to={item.path}
+      className={({ isActive }) => (isActive ? "text-red-500" : "")}
+    >
+      {item.name}
+    </NavLink>
+  ));
 
-    const handleSignOut = ()=>{
-      logOut()
-      .then(()=>{})
-      .catch(err=>console.log(err))
-    }
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="shadow-md">
       <div className="navbar bg-base-100">
@@ -50,10 +57,17 @@ const Navbar = () => {
               {link}
             </div>
           </div>
-          <NavLink className="btn btn-ghost normal-case text-xl" to={"/"}>
+          <NavLink
+            className="btn btn-ghost normal-case text-xl hidden sm:block"
+            to={"/"}
+          >
             <img src="https://i.ibb.co/tD9hxF9/logo.png" alt="" />
           </NavLink>
+          <Link to='/'>
+            <GiForkKnifeSpoon size={30} className="text-red-500 sm:hidden" />
+          </Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
           <div className="menu menu-horizontal px-1 space-x-3 text-lg">
             {link}
@@ -88,6 +102,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

@@ -10,7 +10,7 @@ import { Navigation } from "swiper";
 const siders = [
   {
     img: "https://i.ibb.co/KhLBMR5/1.png",
-    title: "Title 1 here",
+    title: "Pizza with cheese",
     desc: "Description",
   },
   {
@@ -29,7 +29,6 @@ const Slider = () => {
     <SwiperSlide key={i}>
       <img src={slide.img} alt="" />
       <div className="desc">
-        <h1>{slide.title} </h1>
       </div>
     </SwiperSlide>
   ));
