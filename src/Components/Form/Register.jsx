@@ -2,11 +2,14 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+
 const Register = () => {
 const [error, setError] = useState('')
   // ========= Context ========
-  const { user, createUser } = useContext(AuthContext);
+  const { user, createUser, userNameUpdate } = useContext(AuthContext);
 
+
+  console.log('user',user);
   // =========== Handle Form ===========
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -18,13 +21,25 @@ const [error, setError] = useState('')
     const password = form.password.value;
     const photoUrl = form.photoUrl.value;
 
+
     createUser(email, password)
     .then((result)=>{
       const user = result.user;
+      profileUpdate(user, userName,photoUrl)
       form.reset()
     })
     .catch((err)=>setError(err.message))
   }
+
+
+const profileUpdate =(user, userName,photoUrl)=>{
+  userNameUpdate(user, userName, photoUrl)
+    .then(() => {
+      alert("Profile");
+    })
+    .catch((err) => setError(err.message));
+}
+
 
   return (
     <div>
