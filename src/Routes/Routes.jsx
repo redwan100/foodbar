@@ -8,6 +8,7 @@ import Register from "../Components/Form/Register";
 import Login from "../Components/Form/Login";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import Error from "../Pages/Error";
+import Blog from "../Pages/Blog";
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
       },
       {
         path: "chef",

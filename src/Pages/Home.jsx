@@ -8,18 +8,20 @@ const Home = () => {
 
   return (
     <div>
-        <Slider />
+      <Slider />
+      <div>
+        <LatestRecipe />
+      </div>
+      <div>
         <div>
-          <LatestRecipe />
+          <Chef />
         </div>
-        <div>
-        <Chef />
         <div>
           <LatestPost />
         </div>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Home

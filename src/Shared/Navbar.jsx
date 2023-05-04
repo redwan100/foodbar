@@ -12,6 +12,10 @@ const headerData = [
     name: "About",
     path: "/about",
   },
+  {
+    name: "Blog",
+    path: "/blog",
+  },
 ];
 
 const Navbar = () => {
