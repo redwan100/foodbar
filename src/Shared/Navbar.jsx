@@ -22,7 +22,7 @@ const headerData = [
 ];
 
 const Navbar = () => {
-  // const [profile, setProfile] = useState(false)
+
   const { user, logOut, handleProfile,profile } = useContext(AuthContext);
 
   const link = headerData.map((item, i) => (
