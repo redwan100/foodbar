@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-import {GiForkKnifeSpoon} from 'react-icons/gi'
+import { GiForkKnifeSpoon } from "react-icons/gi";
 
 const headerData = [
   {
@@ -81,13 +81,19 @@ const Navbar = () => {
           <div className="navbar-end">
             {user ? (
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8">
-                  <img
-                    className="w-full h-full rounded-full ring"
-                    src={user.photoURL}
-                    alt=""
-                  />
-                </div>
+                {user.photoURL ? (
+                  <div className="w-8 h-8">
+                    <img
+                      className="w-full h-full rounded-full ring"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                  </div>
+                ) : (
+                  <span className="font-semibold text-lg text-gray-700">
+                    {user.displayName}
+                  </span>
+                )}
                 <button
                   onClick={handleSignOut}
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

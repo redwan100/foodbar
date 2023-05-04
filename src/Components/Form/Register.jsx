@@ -77,6 +77,7 @@ const handleGithubLogin = () =>{
             type="text"
             placeholder="Username"
             name="username"
+            required
           />
         </div>
         <div className="mb-4">

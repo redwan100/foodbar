@@ -1,14 +1,15 @@
 import { Rating } from "@smastrom/react-rating";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
 import { useLoaderData, Link } from "react-router-dom";
 
 const ChefDetails = () => {
+  const [isFavorite, setIsFavorite] = useState(false);
   const data = useLoaderData();
 
-  console.log(data);
   const {
     id,
     chefPicture,
@@ -21,6 +22,8 @@ const ChefDetails = () => {
     recipi,
   } = data[0];
 
+ 
+
   const recipeItem = recipi.map((item) => {
     const { Picture, cookingMethod, id, ingredients, rating, recipeName } =
       item;
@@ -30,6 +33,7 @@ const ChefDetails = () => {
         {item}
       </p>
     ));
+
     return (
       <React.Fragment key={id}>
         <div className="card bg-base-100 shadow-xl">
@@ -63,6 +67,14 @@ const ChefDetails = () => {
                 <Rating value={ratings} readOnly />
                 <span className="text-sm">{rating}</span>
               </div>
+            </div>
+            <div className="absolute bottom-2 right-2">
+              <button
+                className="flex items-center gap-3 w-max mx-auto py-2 px-5 bg-slate-200 font-semibold text-lg rounded-md"
+              >
+                Favorite
+                  <FaRegHeart />
+              </button>
             </div>
           </div>
         </div>
