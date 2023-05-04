@@ -2,6 +2,7 @@ import { AiOutlineGoogle, AiFillGithub } from "react-icons/ai";
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import toast from 'react-hot-toast'
 
 const Register = () => {
 const [error, setError] = useState('')
@@ -25,6 +26,7 @@ const [error, setError] = useState('')
     .then((result)=>{
       const user = result.user;
       profileUpdate(user, userName,photoUrl)
+      toast('User successfully created')
       form.reset()
     })
     .catch((err)=>setError(err.message))
@@ -34,7 +36,6 @@ const [error, setError] = useState('')
 const profileUpdate =(user, userName,photoUrl)=>{
   userNameUpdate(user, userName, photoUrl)
     .then(() => {
-      alert("Profile");
     })
     .catch((err) => setError(err.message));
 }
@@ -44,7 +45,8 @@ const handleGoogleLogin = () =>{
   googleLogin()
   .then((result)=>{
     const loggedIn = result.user;
-    console.log(loggedIn);
+    toast('Successfully login')
+
   })
   .catch((error)=>setError(error.message))
 }
@@ -52,7 +54,7 @@ const handleGithubLogin = () =>{
   githubLogin()
     .then((result) => {
       const loggedIn = result.user;
-      console.log(loggedIn);
+      toast("Successfully login");
     })
     .catch((error) => setError(error.message));
 }
