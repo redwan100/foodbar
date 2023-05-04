@@ -95,7 +95,7 @@ const handleProfile = ()=>{
           <div className="navbar-end">
             {/* ==== conditionally rendering ===== */}
             {user ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 cursor-pointer" onClick={handleProfile}>
                 {user.photoURL ? (
                   <div className="w-8 h-8">
                     <img
@@ -105,7 +105,7 @@ const handleProfile = ()=>{
                     />
                   </div>
                 ) : (
-                  <span className="text-2xl" onClick={handleProfile}>
+                  <span className="text-2xl">
                     <FaRegUserCircle />
                   </span>
                 )}
@@ -129,7 +129,10 @@ const handleProfile = ()=>{
         </div>
       </div>
 
-      <div className={`fixed top-0 right-3 ${profile?"block":"hidden"}`} onClick={handleProfile}>
+      <div
+        className={`fixed top-0 right-3 ${profile ? "block" : "hidden"}`}
+        onClick={handleProfile}
+      >
         <About />
       </div>
     </div>
