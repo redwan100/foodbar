@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import About from "../Pages/About";
-import UserProfile from "../Components/userProfile";
 
 const headerData = [
   {
@@ -23,8 +22,12 @@ const headerData = [
 ];
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const [profile, setProfile] = useState(false)
+  const { user, logOut,loading } = useContext(AuthContext);
 
+  if(loading){
+    return <p>Loading...</p>
+  }
   const link = headerData.map((item, i) => (
     <NavLink
       key={i}
@@ -35,11 +38,18 @@ const Navbar = () => {
     </NavLink>
   ));
 
+
   const handleSignOut = () => {
     logOut()
       .then(() => {})
       .catch((err) => console.log(err));
   };
+
+// ======= handle profile show ==========
+
+const handleProfile = ()=>{
+  setProfile(!profile)
+}
   return (
     <div className="fixed top-0 z-50 mx-[auto!important] w-full shadow-md">
       <div className="myContainer ">
@@ -95,7 +105,7 @@ const Navbar = () => {
                     />
                   </div>
                 ) : (
-                  <span className="text-2xl">
+                  <span className="text-2xl" onClick={handleProfile}>
                     <FaRegUserCircle />
                   </span>
                 )}
@@ -119,8 +129,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="fixed top-0 right-3 hidden">
-        <UserProfile />
+      <div className={`fixed top-0 right-3 ${profile?"block":"hidden"}`} onClick={handleProfile}>
+        <About />
       </div>
     </div>
   );

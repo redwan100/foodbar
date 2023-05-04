@@ -9,6 +9,7 @@ import Login from "../Components/Form/Login";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import Error from "../Pages/Error";
 import Blog from "../Pages/Blog";
+import UserProfile from "../Components/userProfile";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <About />,
+        element: <UserProfile />,
       },
       {
         path: "blog",
