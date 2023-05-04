@@ -13,7 +13,6 @@ const Chef = () => {
       const res = await fetch(url);
       const data = await res.json();
       setChefInfo(data);
-      console.log(data);
       setLoading(false);
     };
 

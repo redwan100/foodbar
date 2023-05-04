@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
-import { IoMdClose} from 'react-icons/io'
+import { MdClose } from "react-icons/md";
+
+
 const About = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   return (
     <div className="bg-white shadow rounded-lg p-6 max-w-md">
+      <span className="absolute top-4 right-3 text-red-500 cursor-pointer text-2xl ">
+        <MdClose />
+      </span>
       <div className="flex justify-center">
         {user &&
           (user.photoURL ? (

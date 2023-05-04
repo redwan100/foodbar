@@ -22,12 +22,9 @@ const headerData = [
 ];
 
 const Navbar = () => {
-  const [profile, setProfile] = useState(false)
-  const { user, logOut,loading } = useContext(AuthContext);
+  // const [profile, setProfile] = useState(false)
+  const { user, logOut, handleProfile,profile } = useContext(AuthContext);
 
-  if(loading){
-    return <p>Loading...</p>
-  }
   const link = headerData.map((item, i) => (
     <NavLink
       key={i}
@@ -47,9 +44,9 @@ const Navbar = () => {
 
 // ======= handle profile show ==========
 
-const handleProfile = ()=>{
-  setProfile(!profile)
-}
+// const handleProfile = ()=>{
+//   setProfile(!profile)
+// }
   return (
     <div className="fixed top-0 z-50 mx-[auto!important] w-full shadow-md">
       <div className="myContainer ">

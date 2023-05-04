@@ -26,7 +26,7 @@ const [error, setError] = useState('')
     .then((result)=>{
       const user = result.user;
       profileUpdate(user, userName,photoUrl)
-      toast('User successfully created')
+      toast.success('User successfully created')
       form.reset()
     })
     .catch((err)=>setError(err.message))
@@ -45,7 +45,7 @@ const handleGoogleLogin = () =>{
   googleLogin()
   .then((result)=>{
     const loggedIn = result.user;
-    toast('Successfully login')
+    toast.success('Successfully login')
 
   })
   .catch((error)=>setError(error.message))
