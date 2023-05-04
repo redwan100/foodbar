@@ -9,7 +9,6 @@ const [error, setError] = useState('')
   const { user, createUser,googleLogin,githubLogin, userNameUpdate } = useContext(AuthContext);
 
 
-  console.log('user',user);
   // =========== Handle Form ===========
   const handleSubmit = (event) => {
     event.preventDefault()

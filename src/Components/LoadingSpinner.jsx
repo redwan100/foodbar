@@ -1,6 +1,7 @@
 import React from 'react'
 import Lottie from "lottie-react";
 import loading from "../../public/loading-animation.json";
+
 const LoadingSpinner = () => {
   return (
     <div className='min-h-screen w-full'>

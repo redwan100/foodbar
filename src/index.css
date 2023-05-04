@@ -5,3 +5,7 @@
 .myContainer{
     @apply container mx-auto w-[80%]
 }
+
+.section{
+    @apply py-16
+}

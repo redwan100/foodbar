@@ -20,12 +20,14 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true)
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const userSignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -56,6 +58,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
+      setLoading(false)
     });
 
     return () => {
@@ -71,7 +74,9 @@ const AuthProvider = ({ children }) => {
     userNameUpdate,
     googleLogin,
     githubLogin,
+    loading,
   };
+
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
