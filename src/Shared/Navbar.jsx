@@ -34,7 +34,7 @@ const Navbar = () => {
   };
   return (
     <div className="fixed top-0 z-50 mx-[auto!important] w-full shadow-md">
-      <div className="myContainer ">
+      <div className="shadow-md myContainer ">
         <div className="navbar bg-base-100">
           <div className="navbar-start">
             <div className="dropdown">
@@ -80,11 +80,7 @@ const Navbar = () => {
                 <div className="w-8 h-8">
                   <img
                     className="w-full h-full rounded-full ring"
-                    src={`${
-                      user.photoUrl
-                        ? user.photoUrl
-                        : "https://source.unsplash.com/user/c_v_r/100x100"
-                    }`}
+                    src={user.photoURL}
                     alt=""
                   />
                 </div>
