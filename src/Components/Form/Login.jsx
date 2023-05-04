@@ -31,8 +31,8 @@ const handleLogin = (event) => {
     .catch((err) => setError(err.message));
 };
   return (
-    <div>
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[80%] sm:w-[50%] md:w-[40%] mx-auto" onSubmit={handleLogin}>
+    <div className='content-center'>
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto" onSubmit={handleLogin}>
         <h1 className="text-center text-3xl font-semibold mb-4">Sign In</h1>
 
         <div className="mb-4">

@@ -10,7 +10,6 @@ import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import Error from "../Pages/Error";
 import Blog from "../Pages/Blog";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: "chef",
         element: <Chef />,
-        loader: () => fetch("http://localhost:5000/category"),
+        loader: () => fetch("https://chef-recipe-wine.vercel.app/category"),
       },
       {
         path: "chefItem/:id",
@@ -49,10 +48,11 @@ const router = createBrowserRouter([
             <ChefDetails />,
           </PrivetRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://chef-recipe-wine.vercel.app/categories/${params.id}`),
       },
     ],
   },
 ]);
 
-export default router
+export default router;

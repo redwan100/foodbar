@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { GiForkKnifeSpoon } from "react-icons/gi";
+import { FaRegUserCircle } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
+import About from "../Pages/About";
+import UserProfile from "../Components/userProfile";
 
 const headerData = [
   {
@@ -79,6 +83,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-end">
+            {/* ==== conditionally rendering ===== */}
             {user ? (
               <div className="flex items-center gap-2">
                 {user.photoURL ? (
@@ -90,27 +95,32 @@ const Navbar = () => {
                     />
                   </div>
                 ) : (
-                  <span className="font-semibold text-lg text-gray-700">
-                    {user.displayName}
+                  <span className="text-2xl">
+                    <FaRegUserCircle />
                   </span>
                 )}
-                <button
+                <span
+                  className="cursor-pointer text-2xl "
                   onClick={handleSignOut}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
-                  Log out
-                </button>
+                  {" "}
+                  <BiLogOut />
+                </span>
               </div>
             ) : (
               <NavLink
                 to="/login"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className=" hover:bg-blue-400 hover:text-white text-blue-500 border border-blue-500 font-bold px-2 py-1 sm:px-4 sm:py-[.3rem] rounded"
               >
                 Log in
               </NavLink>
             )}
           </div>
         </div>
+      </div>
+
+      <div className="fixed top-0 right-3 hidden">
+        <UserProfile />
       </div>
     </div>
   );

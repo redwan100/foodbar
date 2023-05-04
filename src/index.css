@@ -9,3 +9,7 @@
 .section{
     @apply py-16
 }
+
+.content-center{
+    @apply w-full min-h-screen grid place-content-center
+}
