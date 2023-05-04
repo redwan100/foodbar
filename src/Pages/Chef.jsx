@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ChefItem } from "../Components/ChefItem";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const Chef = () => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ useEffect(() => {
  
    if (loading) {
      return (
-       <p>Loading...</p>
+      <LoadingSpinner />
      );
    }
 
