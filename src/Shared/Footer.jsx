@@ -1,41 +1,57 @@
 import React from 'react'
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-4 md:py-8">
-      <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center">
-        <div className="text-sm text-gray-600 mb-2 md:mb-0">
-          © 2023 My Recipe Blog
+    <footer class="bg-gray-900 text-gray-300 py-4 md:py-8">
+      <div className="myContainer">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div class="text-center md:text-left">
+            <p class="font-bold text-lg">© 2023 Food Recipe</p>
+            <p class="mt-2">All rights reserved.</p>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <ul class="flex space-x-4">
+              <li>
+                <a href="#" class="hover:text-gray-400">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-gray-400">
+                  Recipes
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-gray-400">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-gray-400">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 md:mt-0 text-center md:text-right">
+            <p className='text-center'>Follow us:</p>
+            <div class="flex justify-center md:justify-end mt-2">
+              <a href="#" class="text-gray-400 hover:text-gray-300 mx-2">
+                <FaFacebook />
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-300 mx-2">
+                <FaTwitter />
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-300 mx-2">
+                <FaInstagram />
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-300 mx-2">
+                <FaLinkedin />
+              </a>
+            </div>
+          </div>
         </div>
-        <ul className="flex flex-wrap justify-center md:justify-end">
-          <li className="mr-4 mb-2 md:mb-0">
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              Privacy Policy
-            </a>
-          </li>
-          <li className="mr-4 mb-2 md:mb-0">
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              Terms of Use
-            </a>
-          </li>
-          <li className="mr-4 mb-2 md:mb-0">
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              Contact Us
-            </a>
-          </li>
-          <li className="mr-4 mb-2 md:mb-0">
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              Advertise with Us
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div className="container mx-auto px-4 md:px-8 text-sm text-gray-600 mt-4 md:mt-8">
-        <p>
-          My Recipe Blog is your go-to source for delicious and healthy recipes.
-          Our mission is to inspire you to cook more at home and enjoy the many
-          benefits of homemade meals.
-        </p>
       </div>
     </footer>
   );

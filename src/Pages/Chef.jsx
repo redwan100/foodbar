@@ -6,7 +6,7 @@ import SectionTitle from "../Shared/SectionTitle";
 const Chef = () => {
   const [loading, setLoading] = useState(true);
   const [chefInfo, setChefInfo] = useState([]);
-  const url = "https://chef-recipe-wine.vercel.app/category";
+  const url = "https://chef-recipe-redwan100.vercel.app/category";
 
   useEffect(() => {
     const fetchData = async () => {
